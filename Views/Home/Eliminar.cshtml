@@ -1,0 +1,42 @@
+@model MiCrudWeb.Models.Persona
+
+@{
+    ViewData["Title"] = "Eliminación de Registro";
+}
+
+<div class="container mt-5" style="max-width: 500px;">
+    <!-- Alerta  en rojo -->
+    <div class="alert alert-danger text-center font-weight-bold mb-4" role="alert">
+         ATENCIÓN: Esta acción es irreversible.
+    </div>
+    
+    <h3 class="text-center text-danger mb-4">¿Confirmas eliminar este registro?</h3>
+
+    <!--  EliminarConfirmado mediante POST -->
+    <form asp-controller="Home" asp-action="EliminarConfirmado" method="post" class="border p-4 shadow-sm rounded bg-white">
+        
+        <!-- RUN Bloqueado -->
+        <div class="mb-3">
+            <label class="form-label font-weight-bold">RUN Chileno:</label>
+            <input asp-for="RUN" class="form-control bg-light" readonly />
+        </div>
+
+        <!-- Nombre Bloqueado -->
+        <div class="mb-3">
+            <label class="form-label font-weight-bold">Nombre Completo:</label>
+            <input asp-for="Nombre" class="form-control bg-light" readonly />
+        </div>
+
+        <!-- Edad Bloqueada -->
+        <div class="mb-3">
+            <label class="form-label font-weight-bold">Edad:</label>
+            <input asp-for="Edad" class="form-control bg-light" type="number" readonly />
+        </div>
+
+        <!-- Boton -->
+        <div class="d-grid gap-2 mt-4">
+            <button type="submit" class="btn btn-danger font-weight-bold">Sí, Eliminar de la Base de Datos</button>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">No, Cancelar y Volver</a>
+        </div>
+    </form>
+</div>

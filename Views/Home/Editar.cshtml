@@ -1,0 +1,39 @@
+@model MiCrudWeb.Models.Persona
+
+@{
+    ViewData["Title"] = "Modificar Datos";
+}
+
+<div class="container mt-5" style="max-width: 500px;">
+    <h2 class="text-center text-warning mb-4">Modificar Persona</h2>
+
+    <!-- El formulario enviará los datos  POST -->
+    <form asp-controller="Home" asp-action="Editar" method="post" class="border p-4 shadow-sm rounded bg-white">
+        
+        <!--  RUN  readonly  -->
+        <div class="mb-3">
+            <label asp-for="RUN" class="form-label font-weight-bold">RUN Chileno (No modificable):</label>
+            <input asp-for="RUN" class="form-control bg-light" readonly />
+        </div>
+
+        <!--  Nombre  -->
+        <div class="mb-3">
+            <label asp-for="Nombre" class="form-label font-weight-bold">Nombre Completo:</label>
+            <input asp-for="Nombre" class="form-control" />
+            <span asp-validation-for="Nombre" class="text-danger small"></span>
+        </div>
+
+        <!--  Edad  -->
+        <div class="mb-3">
+            <label asp-for="Edad" class="form-label font-weight-bold">Edad:</label>
+            <input asp-for="Edad" class="form-control" type="number" />
+            <span asp-validation-for="Edad" class="text-danger small"></span>
+        </div>
+
+        <!-- Boton -->
+        <div class="d-grid gap-2 mt-4">
+            <button type="submit" class="btn btn-warning font-weight-bold">Guardar Cambios en SQL Server</button>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Cancelar y Volver</a>
+        </div>
+    </form>
+</div>
